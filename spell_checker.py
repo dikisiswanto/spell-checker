@@ -1,5 +1,6 @@
 import csv
 
+""" Custom cost of Levenshtein Distance """
 INSERTION_COST = 1.0
 DELETION_COST = 1.0
 SUBSTITUTION_COST = 1.0
@@ -98,20 +99,6 @@ def edit_distance(word1, word2):
   return d[m][n]
 
 def spell_checker(word, dictionary):
-  """Returns the most likely correct spelling of a word, along with the similarity score and edit distance, considering the keyboard distance and vowel addition."""
-  best_word = word
-  min_distance = float("inf")
-  min_score = float("inf")
-  for w in dictionary:
-    distance = edit_distance(word, w)
-    score = 1 - distance / len(word)
-    if distance <= 2 and distance < min_distance or (distance == min_distance and score < min_score):
-      min_distance = distance
-      min_score = score
-      best_word = w
-  return best_word, min_score, min_distance
-
-def spell_checker_with_recommendation(word, dictionary):
   """Returns the 5 most likely correct spellings of a word, along with the similarity score and edit distance, considering the keyboard distance and vowel addition."""
   best_words = []
   min_distance = float("inf")
@@ -132,7 +119,7 @@ def main():
   words = load_dictionary_from_tsv(filename)
 
   word = input("Enter a word: ")
-  corrected_words = spell_checker_with_recommendation(word, words)
+  corrected_words = spell_checker(word, words)
   print(f"The most likely correct spellings of {word} are:")
   for w in corrected_words:
     print(f"- {w}")
