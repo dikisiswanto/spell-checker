@@ -99,7 +99,7 @@ def edit_distance(word1, word2):
   return d[m][n]
 
 def spell_checker(word, dictionary):
-  """Returns the 5 most likely correct spellings of a word, along with the similarity score and edit distance, considering the keyboard distance and vowel addition."""
+  """Returns the 5 most likely correct spellings of a word, along with the similarity score and edit distance."""
   best_words = []
   min_distance = float("inf")
   best_score = 0
