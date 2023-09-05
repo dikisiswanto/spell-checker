@@ -115,7 +115,7 @@ def spell_checker(word, dictionary):
   return best_words[:5]
 
 def main():
-  filename = "/content/kbbi-root-word.tsv"
+  filename = "data/kbbi-root-word.tsv"
   words = load_dictionary_from_tsv(filename)
 
   word = input("Enter a word: ")
